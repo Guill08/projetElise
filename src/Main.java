@@ -1,4 +1,5 @@
 import objet.photo.*;
+import org.ietf.jgss.Oid;
 
 
 import java.awt.*;
@@ -25,55 +26,77 @@ public class Main extends JFrame {
         chargeListeNez(Main.collectionNez);
         chargeListeOreille(Main.collectionOreille);
         chargeListeOeil(Main.collectionOeil);
-        Portrait portrait = new Portrait();
-        Bouche bouche = new Bouche();
+
+
+        Bouche bouche = (Bouche) collectionBouche.get(Zone.genererNombnreAleatoire(6));
+        bouche.setX(108);
+        bouche.setY(317);
+        Oeil oeilD = (Oeil) collectionOeil.get(Zone.genererNombnreAleatoire(12));
+        oeilD.setX(143);
+        oeilD.setY(151);
+        Oeil oeilG = (Oeil) collectionOeil.get(Zone.genererNombnreAleatoire(12));
+        oeilG.setX(36);
+        oeilG.setY(143);
+        Oreille oreilleD =  (Oreille) collectionOreille.get(Zone.genererNombnreAleatoire(12));
+        oreilleD.setX(237);
+        oreilleD.setY(204);
+        Oreille oreilleG =(Oreille) collectionOreille.get(Zone.genererNombnreAleatoire(12));
+        oreilleG.setX(8);
+        oreilleG.setY(204);
+        Nez nez =(Nez) collectionNez.get(Zone.genererNombnreAleatoire(7));
+        nez.setX(126);
+        nez.setY(208);
+        Visage visage =(Visage) collectionVisage.get(Zone.genererNombnreAleatoire(4));
+        visage.setX(0);
+        visage.setY(0);
+        Portrait portrait = new Portrait(nez,bouche,oeilD,oeilG,oreilleD,oreilleG,visage);
 
 
 
 
-        Visage visage = new Visage(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\visage.png"));
-
-        setSize(visage.getImage().getWidth(), visage.getImage().getHeight());
-
-        Oeil oeilDB = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\odb.png"));
-        oeilDB.setX(990);
-        oeilDB.setY(981);
-
-        Oeil oeilD = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\od.png"));
-        oeilD.setX(990);
-        oeilD.setY(981);
-
-        Oeil oeilG = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\og.png"));
-        oeilG.setX(318);
-        oeilG.setY(999);
-
-        Oeil oeilGV = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\ogv.png"));
-        oeilGV.setX(318);
-        oeilGV.setY(999);
-
-        ArrayList<Zone> collectionZone = new ArrayList<Zone>();
-        collectionZone.add(oeilDB);
-        collectionZone.add(oeilD);
-        collectionZone.add(oeilG);
-        collectionZone.add(oeilGV);
-
-
+//        Visage visage = new Visage(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\visage.png"));
+//
+//        setSize(visage.getImage().getWidth(), visage.getImage().getHeight());
+//
+//        Oeil oeilDB = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\odb.png"));
+//        oeilDB.setX(990);
+//        oeilDB.setY(981);
+//
+//        Oeil oeilD = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\od.png"));
+//        oeilD.setX(990);
+//        oeilD.setY(981);
+//
+//        Oeil oeilG = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\og.png"));
+//        oeilG.setX(318);
+//        oeilG.setY(999);
+//
+//        Oeil oeilGV = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\ogv.png"));
+//        oeilGV.setX(318);
+//        oeilGV.setY(999);
+//
+//        ArrayList<Zone> collectionZone = new ArrayList<Zone>();
+//        collectionZone.add(oeilDB);
+//        collectionZone.add(oeilD);
+//        collectionZone.add(oeilG);
+//        collectionZone.add(oeilGV);
 
 
-        JLabel label = new JLabel(getImageIcon(new ImageIcon(visage.getImage())));
+
+
+        JLabel label = new JLabel(getImageIcon(new ImageIcon(portrait.getImage())));
         add(label);
-        label.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int i = extracted(collectionZone.size());
-                    visage.ajouter(collectionZone.get(i));
-                    label.setIcon(getImageIcon(new ImageIcon(visage.getImage())));
-                }
-            }
-        });
+//        label.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                if (e.getClickCount() == 2) {
+//                    int i = 1;
+//                    visage.ajouter(collectionZone.get(i));
+//                    label.setIcon(getImageIcon(new ImageIcon(visage.getImage())));
+//                }
+//            }
+//        });
         // Configurer le cadre
-        setTitle("Combiner Images en Disposition Verticale");
+        setTitle("Auto#Portrait@");
 
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -8,6 +8,7 @@ public abstract class Zone {
     protected int x;
     protected int y;
     protected int maxTaille =4;
+
     public Zone(BufferedImage image) {
         this.image = image;
     }
@@ -34,7 +35,7 @@ public abstract class Zone {
     public void setX(int x) {
         this.x = x;
     }
-    public  int genererNombnreAleatoire() {
+    public static int genererNombnreAleatoire(int maxTaille) {
         Random random = new Random();
         return random.nextInt(maxTaille);
     }
