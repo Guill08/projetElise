@@ -51,12 +51,12 @@ public class Main extends JFrame {
         visage.setY(0);
         Portrait portrait = new Portrait(nez,bouche,oeilD,oeilG,oreilleD,oreilleG,visage);
 
-
+        setSize(visage.getImage().getWidth(), visage.getImage().getHeight());
 
 
 //        Visage visage = new Visage(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\visage.png"));
 //
-//        setSize(visage.getImage().getWidth(), visage.getImage().getHeight());
+//
 //
 //        Oeil oeilDB = new Oeil(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\odb.png"));
 //        oeilDB.setX(990);
