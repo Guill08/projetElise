@@ -1,6 +1,4 @@
-import objet.photo.Oeil;
-import objet.photo.Visage;
-import objet.photo.Zone;
+import objet.photo.*;
 
 
 import java.awt.*;
@@ -15,7 +13,24 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main extends JFrame {
+    public static ArrayList<Zone> collectionVisage = new ArrayList<Zone>();
+    public static ArrayList<Zone> collectionNez = new ArrayList<Zone>();
+    public static ArrayList<Zone> collectionBouche = new ArrayList<Zone>();
+    public static ArrayList<Zone> collectionOeil = new ArrayList<Zone>();
+    public static ArrayList<Zone> collectionOreille = new ArrayList<Zone>();
+
     public Main() {
+        chargeListeVisage(Main.collectionVisage);
+        chargeListeBouche(Main.collectionBouche);
+        chargeListeNez(Main.collectionNez);
+        chargeListeOreille(Main.collectionOreille);
+        chargeListeOeil(Main.collectionOeil);
+        Portrait portrait = new Portrait();
+        Bouche bouche = new Bouche();
+
+
+
+
         Visage visage = new Visage(loadImage("C:\\Users\\33650\\Pictures\\fototech2\\visage.png"));
 
         setSize(visage.getImage().getWidth(), visage.getImage().getHeight());
@@ -51,8 +66,7 @@ public class Main extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    Random rand = new Random();
-                    int i = rand.nextInt(collectionZone.size());
+                    int i = extracted(collectionZone.size());
                     visage.ajouter(collectionZone.get(i));
                     label.setIcon(getImageIcon(new ImageIcon(visage.getImage())));
                 }
@@ -63,6 +77,69 @@ public class Main extends JFrame {
 
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+
+
+    private void chargeListeOeil(ArrayList<Zone> collectionOeil) {
+        File directory = new File("photos_modeles/oeil/");
+        File[] filesList = directory.listFiles((dir, name) -> new File(dir, name).isFile());
+        if (filesList != null) {
+            for (File file : filesList) {
+                Oeil oeil = new Oeil(loadImage(file.getPath()));
+                collectionOeil.add(oeil);
+            }
+        }
+    }
+
+    private void chargeListeOreille(ArrayList<Zone> collectionOreille) {
+        File directory = new File("photos_modeles/oreille/");
+        File[] filesList = directory.listFiles((dir, name) -> new File(dir, name).isFile());
+        if (filesList != null) {
+            for (File file : filesList) {
+                Oreille oreille = new Oreille(loadImage(file.getPath()));
+                collectionOreille.add(oreille);
+            }
+        }
+    }
+
+    private void chargeListeNez(ArrayList<Zone> collectionNez) {
+        File directory = new File("photos_modeles/nez/");
+        File[] filesList = directory.listFiles((dir, name) -> new File(dir, name).isFile());
+        if (filesList != null) {
+            for (File file : filesList) {
+                Nez nez = new Nez(loadImage(file.getPath()));
+                collectionNez.add(nez);
+            }
+        }
+    }
+
+    private void chargeListeBouche(ArrayList<Zone> collectionBouche) {
+        File directory = new File("photos_modeles/bouche/");
+        File[] filesList = directory.listFiles((dir, name) -> new File(dir, name).isFile());
+        if (filesList != null) {
+            for (File file : filesList) {
+                Bouche bouche = new Bouche(loadImage(file.getPath()));
+                collectionBouche.add(bouche);
+            }
+        }
+    }
+
+    private void chargeListeVisage(ArrayList<Zone> collectionVisage) {
+        File directory = new File("photos_modeles/visage/");
+        File[] filesList = directory.listFiles((dir, name) -> new File(dir, name).isFile());
+        if (filesList != null) {
+            for (File file : filesList) {
+              Visage visage = new Visage(loadImage(file.getPath()));
+              collectionVisage.add(visage);
+            }
+        }
+
+
+    }
+
+    private void chargeListeZone(String dossier, ArrayList<Zone> collectionVisage) {
+
     }
 
     private BufferedImage initUI(Main combineImagesVertical) {

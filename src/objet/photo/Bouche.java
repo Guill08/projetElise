@@ -6,4 +6,7 @@ public class Bouche extends Zone{
     public Bouche(BufferedImage image) {
         super(image);
     }
+
+    public Bouche() {
+    }
 }

@@ -10,6 +10,9 @@ public class Visage extends Zone {
         super(image);
     }
 
+    public Visage() {
+    }
+
     public  void ajouter(Zone zone) {
 
 

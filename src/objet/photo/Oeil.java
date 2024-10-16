@@ -6,4 +6,8 @@ public class Oeil extends Zone {
     public Oeil(BufferedImage image) {
         super(image);
     }
+
+    public Oeil() {
+    }
+
 }

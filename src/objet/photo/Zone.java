@@ -1,14 +1,18 @@
 package objet.photo;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public abstract class Zone {
     protected BufferedImage image;
     protected int x;
     protected int y;
-
+    protected int maxTaille =4;
     public Zone(BufferedImage image) {
         this.image = image;
+    }
+
+    public Zone() {
     }
 
     public BufferedImage getImage() {
@@ -29,5 +33,9 @@ public abstract class Zone {
 
     public void setX(int x) {
         this.x = x;
+    }
+    public  int genererNombnreAleatoire() {
+        Random random = new Random();
+        return random.nextInt(maxTaille);
     }
 }

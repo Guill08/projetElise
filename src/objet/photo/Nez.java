@@ -6,4 +6,7 @@ public class Nez extends Zone{
     public Nez(BufferedImage image) {
         super(image);
     }
+
+    public Nez() {
+    }
 }
